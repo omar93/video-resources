@@ -1,14 +1,14 @@
 <script>
     import Videolist from "./lib/videolist.svelte";
     import { list } from "./stores/videos.js";
+    import { v4 as uuidv4 } from 'uuid';
 
     let inputValue = ''
-    let counter = 0
-
+    
     const handleSubmit = _ => {
         let youtubeID = inputValue.split('v=')[1]
         let imageHandler =  `https://i.ytimg.com/vi/${youtubeID}/hqdefault.jpg`
-        $list = [...$list, {id: counter.toString(), url: imageHandler}]
+        $list = [...$list, {id: uuidv4(), url: imageHandler}]
         counter++
     }
 </script>
