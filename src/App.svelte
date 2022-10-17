@@ -5,17 +5,17 @@
 
     let inputValue = ''
     
-    const handleSubmit = _ => {
+    const handleNewVideoSubmit = async () => {
         let youtubeID = inputValue.split('v=')[1]
-        let imageHandler =  `https://i.ytimg.com/vi/${youtubeID}/hqdefault.jpg`
-        $list = [...$list, {id: uuidv4(), url: imageHandler}]
-        counter++
+        let imageHandler = `https://i.ytimg.com/vi/${youtubeID}/hqdefault.jpg`
+        console.log(imageHandler);
+        $list = [...$list, {id: uuidv4(), imgUrl: imageHandler, videoUrl: inputValue}]
     }
 </script>
 
 <div id="main--container">
 
-    <form id="link--form" on:submit|preventDefault={handleSubmit}>
+    <form id="link--form" on:submit|preventDefault={handleNewVideoSubmit}>
         <input type="text" name="link" placeholder="Youtube Link" bind:value={inputValue}/>
     </form>
 <hr>

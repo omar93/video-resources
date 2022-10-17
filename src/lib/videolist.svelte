@@ -4,21 +4,22 @@
     
     const handleRemove = event => {
         const id = event.detail.id
-        $list = $list.filter(video => video.id !== id );
-        console.log(id, 'removed');
+        $list = $list.filter(video => video.id !== id);
     }
+
 </script>
 
-<div id="videoList--container">
+<ul id="videoList--container">
     {#each $list as video}
-        <Video {video} on:remove={handleRemove}/>
+        <Video {...video} on:remove={handleRemove}/>
     {/each}
-</div>
+</ul>
 
 <style>
     #videoList--container {
-        display: flex;
-        height: 100%;
-        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr) );
+        gap: 25px;
+        list-style-type: none;
     }
 </style>

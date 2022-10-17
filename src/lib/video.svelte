@@ -3,31 +3,47 @@
 
     const dispatch = createEventDispatcher();
 
-    export let video = {
-        id: '1',
-        url: 'https://i.ytimg.com/vi/1/hqdefault.jpg'
-    }
+    export let id = '1'
+    export let imgUrl = 'https://i.ytimg.com/vi/1/hqdefault.jpg'
+    export let videoUrl = 'https://www.youtube.com/watch?v=1'
+
+    let mouseIsOnVideo = false
 
     const handleRemove = () => {
-        dispatch('remove', {id:video.id});
+        dispatch('remove', {id});
+    }
+
+    const playVideo = () => {
+        console.log(videoUrl);
+    }
+
+    const handleZoomIn = () => {
+        console.log('zoom in');
+        mouseIsOnVideo = true;
+    }
+
+    const handleZoomOut = () => {
+        console.log('zoom out');
+        mouseIsOnVideo = false;
     }
 
 </script>
 
 
-<div id="video--container">
-    <button id="remove--button" on:click={handleRemove}>X</button>
-    <div id="video--thumbnail" style="background-image: url({video.url});"></div>
-</div>
+<li id="video--container" class={ mouseIsOnVideo  ? "zoomed--in" : 'zoomed--out' }  on:mouseenter={handleZoomIn} on:mouseleave={handleZoomOut}>
+    <img id="video--thumbnail"on:click={playVideo} on:keypress={playVideo} src="{imgUrl}" alt="youtube thumbnail">
+    <button id="remove--button" on:click|stopPropagation={handleRemove}>X</button>
+</li>
 
 <style>
 
     #video--container {
-        height: 350px;
-        width: 450px;
+        height: 100%;
+        width: 100%;
         border: 1px solid black;
         border-radius: 1em;
         position: relative;
+        transition: transform 300ms;
     }
 
     #remove--button {
@@ -44,10 +60,21 @@
     }
 
     #video--thumbnail {
+        cursor: pointer;
         height: 100%;
         width: 100%;
         border-radius: 1em;
-        object-fit:scale-down;
+        overflow:hidden;
+
+    }
+
+    .zoomed--in {
+        transform: scale(1.2);
+        
+    }
+
+    .zoomed--out {
+        transform: scale(1);
     }
 
 </style>
