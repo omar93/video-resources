@@ -14,7 +14,6 @@
 </script>
 
 <div id="main--container">
-
     <form id="link--form" on:submit|preventDefault={handleNewVideoSubmit}>
         <input type="text" name="link" placeholder="Youtube Link" bind:value={inputValue}/>
     </form>
@@ -22,7 +21,6 @@
     <div id="video--container">
         <Videolist/>
     </div>
-
 </div>
 
 <style>
@@ -30,13 +28,18 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        /*justify-content: center;*/
         height: 100vh;
         width: 100vw;
     }
 
+    form {
+        margin-top: 20px;
+    }
+
     #video--container {
-        height: 70%;
-        width: 60%;
+        height: 80%;
+        width: 80%;
+        border: 1px solid red;
     }
 </style>

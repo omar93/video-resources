@@ -18,8 +18,9 @@
 <style>
     #videoList--container {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr) );
-        gap: 25px;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 0.5fr) );
+        gap: 20px;
         list-style-type: none;
     }
+
 </style>

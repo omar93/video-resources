@@ -18,22 +18,20 @@
     }
 
     const handleZoomIn = () => {
-        console.log('zoom in');
         mouseIsOnVideo = true;
     }
 
     const handleZoomOut = () => {
-        console.log('zoom out');
         mouseIsOnVideo = false;
     }
 
 </script>
 
-
-<li id="video--container" class={ mouseIsOnVideo  ? "zoomed--in" : 'zoomed--out' }  on:mouseenter={handleZoomIn} on:mouseleave={handleZoomOut}>
-    <img id="video--thumbnail"on:click={playVideo} on:keypress={playVideo} src="{imgUrl}" alt="youtube thumbnail">
+<li id="video--container"  on:mouseenter={handleZoomIn} on:mouseleave={handleZoomOut}>
+    <img id="video--thumbnail"on:click={playVideo} on:keypress={playVideo} class={ mouseIsOnVideo  ? "zoomed--in" : 'zoomed--out' } src="{imgUrl}" alt="youtube thumbnail">
     <button id="remove--button" on:click|stopPropagation={handleRemove}>X</button>
 </li>
+
 
 <style>
 
@@ -42,6 +40,7 @@
         width: 100%;
         border: 1px solid black;
         border-radius: 1em;
+        overflow: hidden;
         position: relative;
         transition: transform 300ms;
     }
@@ -65,12 +64,12 @@
         width: 100%;
         border-radius: 1em;
         overflow:hidden;
+        transition: transform 300ms;
 
     }
 
     .zoomed--in {
         transform: scale(1.2);
-        
     }
 
     .zoomed--out {
