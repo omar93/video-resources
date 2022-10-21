@@ -7,6 +7,7 @@
     
     const handleNewVideoSubmit = async () => {
         let youtubeID = inputValue.split('v=')[1]
+        console.log(inputValue);
         let imageHandler = `https://i.ytimg.com/vi/${youtubeID}/hqdefault.jpg`
         console.log(imageHandler);
         $list = [...$list, {id: uuidv4(), imgUrl: imageHandler, videoUrl: inputValue}]
@@ -38,8 +39,8 @@
     }
 
     #video--container {
-        height: 80%;
-        width: 80%;
-        border: 1px solid red;
+        margin-top: 50px;
+        height: 90%;
+        width: 100%;
     }
 </style>

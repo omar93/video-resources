@@ -7,6 +7,8 @@
     export let imgUrl = 'https://i.ytimg.com/vi/1/hqdefault.jpg'
     export let videoUrl = 'https://www.youtube.com/watch?v=1'
 
+    let buttonsVisability = false
+    let isVideoClicked = false
     let mouseIsOnVideo = false
 
     const handleRemove = () => {
@@ -19,17 +21,26 @@
 
     const handleZoomIn = () => {
         mouseIsOnVideo = true;
+        buttonsVisability = true
     }
 
     const handleZoomOut = () => {
         mouseIsOnVideo = false;
+        if(!isVideoClicked) {
+            buttonsVisability = false
+        }
+    }
+
+    const handleCheckBox = () => {
+        isVideoClicked = !isVideoClicked
     }
 
 </script>
 
-<li id="video--container"  on:mouseenter={handleZoomIn} on:mouseleave={handleZoomOut}>
+<li id="video--container" on:mouseenter={handleZoomIn} on:mouseleave={handleZoomOut}>
     <img id="video--thumbnail"on:click={playVideo} on:keypress={playVideo} class={ mouseIsOnVideo  ? "zoomed--in" : 'zoomed--out' } src="{imgUrl}" alt="youtube thumbnail">
-    <button id="remove--button" on:click|stopPropagation={handleRemove}>X</button>
+    <button id="remove--button" on:click|stopPropagation={handleRemove} class="{buttonsVisability ? "" : "invisible"}">X</button>
+    <input class="{buttonsVisability ? "" : "invisible"}" type="checkbox" id="video--checkbox" on:click={handleCheckBox}>
 </li>
 
 
@@ -58,6 +69,15 @@
         font-size: 15px;
     }
 
+    #video--checkbox {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        width: 20px;
+        height: 20px;
+        accent-color: #c42323;
+    }
+
     #video--thumbnail {
         cursor: pointer;
         height: 100%;
@@ -65,7 +85,6 @@
         border-radius: 1em;
         overflow:hidden;
         transition: transform 300ms;
-
     }
 
     .zoomed--in {
@@ -74,6 +93,10 @@
 
     .zoomed--out {
         transform: scale(1);
+    }
+
+    .invisible {
+        display: none;
     }
 
 </style>
