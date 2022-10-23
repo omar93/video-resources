@@ -8,7 +8,7 @@ export async function handle({ event, resolve }) {
     event.locals.pocketbase.authStore.loadFromCookie(event.request.headers.get('cookie') || '');
 
     if(event.locals.pocketbase.authStore.isValid) {
-        event.locals.user = event.locals.pocketbase.authstore.model
+        event.locals.user = event.locals.pocketbase.authStore.model
     }
 
     const response = await resolve(event);
