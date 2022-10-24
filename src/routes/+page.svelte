@@ -1,8 +1,8 @@
 <script>
-    export let data
-    console.log(data);
+  import Startpage from "../lib/startpage.svelte";
+  export let data
 
-    export let form
+  export let form
 </script>
 
 {#if form?.success}
@@ -12,3 +12,5 @@
 {/if}
 
 <span>Welcome {data.email}</span>
+
+<Startpage/>

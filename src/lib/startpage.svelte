@@ -1,16 +1,36 @@
 <script>
-    import Videolist from "./lib/videolist.svelte";
-    import { list } from "./stores/videos.js";
-    import { v4 as uuidv4 } from 'uuid';
+    import PocketBase from 'pocketbase';
+    import Videolist from "./videolist.svelte";
+
+    import { onMount } from 'svelte';
+    const client = new PocketBase('http://127.0.0.1:8090');
+    
+    let list = []
+
+    onMount(async () => {
+        const resultList = await client.records.getList('videos', 1, 50)
+        
+        resultList.items.forEach(object => {
+
+            list = [...list,{
+                id: object.id,
+                imgUrl: object.imgurl,
+                videoUrl: object.videourl
+            }]
+        })
+    });
 
     let inputValue = ''
     
     const handleNewVideoSubmit = async () => {
         let youtubeID = inputValue.split('v=')[1]
-        console.log(inputValue);
         let imageHandler = `https://i.ytimg.com/vi/${youtubeID}/hqdefault.jpg`
-        console.log(imageHandler);
-        $list = [...$list, {id: uuidv4(), imgUrl: imageHandler, videoUrl: inputValue}]
+        let video = {
+            videourl: inputValue,
+            imgurl: imageHandler
+        }
+        list = [...list, video]
+        const record = await client.records.create('videos', video);
     }
 </script>
 
@@ -18,9 +38,13 @@
     <form id="link--form" on:submit|preventDefault={handleNewVideoSubmit}>
         <input type="text" name="link" placeholder="Youtube Link" bind:value={inputValue}/>
     </form>
-<hr>
+    <hr>
     <div id="video--container">
-        <Videolist/>
+        {#await list}
+            <p>loading...</p>
+        {:then list}
+            <Videolist list={list}/>
+        {/await}
     </div>
 </div>
 
