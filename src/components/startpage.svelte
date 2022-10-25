@@ -1,36 +1,26 @@
 <script>
-    import PocketBase from 'pocketbase';
-    import Videolist from "./videolist.svelte";
-
+    import Videolist from "../components/videolist.svelte";
+    import { getVideos, saveVideos } from "../lib/helpers";
     import { onMount } from 'svelte';
-    const client = new PocketBase('http://127.0.0.1:8090');
+    
+    onMount(() => getVideos())
     
     let list = []
-
-    onMount(async () => {
-        const resultList = await client.records.getList('videos', 1, 50)
-        
-        resultList.items.forEach(object => {
-
-            list = [...list,{
-                id: object.id,
-                imgUrl: object.imgurl,
-                videoUrl: object.videourl
-            }]
-        })
-    });
-
     let inputValue = ''
     
     const handleNewVideoSubmit = async () => {
         let youtubeID = inputValue.split('v=')[1]
         let imageHandler = `https://i.ytimg.com/vi/${youtubeID}/hqdefault.jpg`
+        let videoJson = generateJson(inputValue, imageHandler)
+        saveVideos('videos', videoJson)
+    }
+
+    const generateJson = (videoUrl, imageHandler) => {
         let video = {
-            videourl: inputValue,
-            imgurl: imageHandler
+            videoUrl: videoUrl,
+            imgUrl: imageHandler
         }
-        list = [...list, video]
-        const record = await client.records.create('videos', video);
+        return video
     }
 </script>
 
@@ -43,7 +33,7 @@
         {#await list}
             <p>loading...</p>
         {:then list}
-            <Videolist list={list}/>
+            <Videolist/>
         {/await}
     </div>
 </div>

@@ -1,17 +1,17 @@
 <script>
+    import { videoStore } from "../lib/store";
     import Video from "./video.svelte"; 
 
-    export let list = []
     
     const handleRemove = event => {
         const id = event.detail.id
-        // $list = $list.filter(video => video.id !== id);
+        $videoStore = $videoStore.filter(video => video.id !== id);
     }
 
 </script>
 
 <ul id="videoList--container">
-    {#each list as video}
+    {#each $videoStore as video}
         <Video {...video} on:remove={handleRemove}/>
     {/each}
 </ul>

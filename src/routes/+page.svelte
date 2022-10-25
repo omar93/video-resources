@@ -1,5 +1,5 @@
 <script>
-  import Startpage from "../lib/startpage.svelte";
+  import Startpage from "../components/startpage.svelte";
   export let data
 
   export let form
