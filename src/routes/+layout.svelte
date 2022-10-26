@@ -1,13 +1,20 @@
 <script>
     import Modal from "../components/modal.svelte";
+    export let data
 </script>
 
 <Modal/>
 
 <nav>
     <a href="/">Home</a>
-    <a href="/login">Login</a>
-    <a href="/register">Register</a>
+    {#if data.profile}
+        <form method="POST" action="/signout">
+            <button type="submit">Signout</button>
+        </form>
+    {:else}
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+    {/if}
 </nav>
   
 <slot></slot>

@@ -1,5 +1,11 @@
 import { redirect } from "@sveltejs/kit"
 
+export const load = ({ locals }) => {
+    if(locals.pocketbase.authStore.isValid) {
+        throw redirect(303, '/')
+    }
+}
+
 export const actions = {
     login: async ({ locals, request }) => {
         const formData = await request.formData()

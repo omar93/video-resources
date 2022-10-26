@@ -2,15 +2,10 @@
   import Startpage from "../components/startpage.svelte";
   export let data
 
-  export let form
 </script>
 
-{#if form?.success}
-  <!-- this message is ephemeral; it exists because the page was rendered in
-       response to a form submission. it will vanish if the user reloads -->
-  <p>Successfully logged in! Welcome back</p>
+{#if !data.profile}
+  <span>Welcome, create an account to continue</span>
+{:else}
+  <Startpage/>
 {/if}
-
-<span>Welcome {data.email}</span>
-
-<Startpage/>

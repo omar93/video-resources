@@ -87,7 +87,7 @@
     }
 
     .zoomed--in {
-        transform: scale(1.2);
+        transform: scale(1.4);
     }
 
     .zoomed--out {
