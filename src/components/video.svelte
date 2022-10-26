@@ -1,5 +1,6 @@
 <script>
     import { createEventDispatcher } from 'svelte';
+    import { modal } from '../lib/store.js'
 
     const dispatch = createEventDispatcher();
 
@@ -15,7 +16,8 @@
         dispatch('remove', {id});
     }
 
-    const playVideo = () => {
+    const videoClicked = () => {
+        $modal = true
         console.log(videoUrl);
     }
 
@@ -38,14 +40,12 @@
 </script>
 
 <li id="video--container" on:mouseenter={handleZoomIn} on:mouseleave={handleZoomOut}>
-    <img id="video--thumbnail"on:click={playVideo} on:keypress={playVideo} class={ mouseIsOnVideo  ? "zoomed--in" : 'zoomed--out' } src="{imgUrl}" alt="youtube thumbnail">
+    <img id="video--thumbnail"on:click={videoClicked} on:keypress={videoClicked} class={ mouseIsOnVideo  ? "zoomed--in" : 'zoomed--out' } src="{imgUrl}" alt="youtube thumbnail">
     <button id="remove--button" on:click|stopPropagation={handleRemove} class="{buttonsVisability ? "" : "invisible"}">X</button>
     <input class="{buttonsVisability ? "" : "invisible"}" type="checkbox" id="video--checkbox" on:click={handleCheckBox}>
 </li>
 
-
 <style>
-
     #video--container {
         height: 100%;
         width: 100%;

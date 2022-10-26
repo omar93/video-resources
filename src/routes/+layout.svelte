@@ -1,3 +1,9 @@
+<script>
+    import Modal from "../components/modal.svelte";
+</script>
+
+<Modal/>
+
 <nav>
     <a href="/">Home</a>
     <a href="/login">Login</a>
