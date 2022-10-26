@@ -1,28 +1,44 @@
 <script>
-    import { modal } from '../lib/store.js'
-    const closeModal = () => {
-        $modal = false
-        console.log('AWSDADS');
-    }
+    import { modal, currentVideo } from '../lib/store.js'
+
+    const closeModal = () => $modal = false
+    
+    let id = ''
+    let renderNow = false
+        
+    currentVideo.subscribe(video => {
+        if(video) {
+            id = video
+            renderNow = true
+            console.log(`https://www.youtube.com/embed/${id}`);
+        }
+    })
+
+
 </script>
 
 {#if $modal}
     <div id="backdrop" on:click|self={closeModal} on:keypress={closeModal}>
         <div id="modal">
+
             <div id="tabs">
-                <span>X</span>
-                <span>X</span>
+                <span id="close--button" on:click|self={closeModal} on:keypress={closeModal}>X</span>
             </div>
             <div id="content">
-                <iframe id="video"
-                    width="840" height="472.5" 
-                    src="https://www.youtube.com/embed/Zs9Tifup1Bc" 
-                    title="youtube video title" 
-                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                </iframe>
+                {#if renderNow}
+                    <iframe id="video"
+                        width="840" height="472.5" 
+                        src="https://www.youtube.com/embed/{id}" 
+                        title="YouTube video player" 
+                        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                {/if}
+
             </div>
+
         </div>
+
     </div>
 {/if}
 
@@ -46,20 +62,33 @@
         justify-content: center;
     }
 
-    #modal {
-        width: 850px;
-        height: 522.5px;
-        background-color: white;
-    }
-
     #tabs {
         background-color: white;
         position: relative;
         height: 50px;
         display: flex;
-        justify-content: center;
         align-items: center;
-        left: auto;
+        justify-content: center;
+        flex: 1;
+        border-top-left-radius: 1em;
+        border-top-right-radius: 1em;
+    }
+
+    #close--button {
+        margin-left: auto;
+        margin-right: 10px;
+        font-family: sans-serif;
+        font-size: 25px;
+        font-weight: 600;
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+    }
+
+    #close--button:hover {
+        background-color: rgb(187, 182, 174);
+        border-radius: 20%;
     }
 
     #content {

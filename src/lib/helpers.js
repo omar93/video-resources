@@ -10,13 +10,21 @@ export const getVideos = async () => {
         list = [...list,{
             id: object.id,
             imgUrl: object.imgUrl,
-            videoUrl: object.videoUrl
+            videoUrl: object.videoUrl,
+            videoID: object.videoID,
         }]
     })
     videoStore.set(list)
 }
 
 export const saveVideos = async (collection, newVideo) => {
-    await client.records.create(collection, newVideo)
-    videoStore.update(items => [...items, newVideo])
+    let savedToDB = await client.records.create(collection, newVideo)
+    let id = savedToDB.id
+    let item = {...newVideo, id}
+    videoStore.update(items => [...items, item])
+}
+
+export const deleteVideo = async (collection, id) => {
+    await client.records.delete(collection, id)
+    videoStore.update(items => items.filter(item => item.id !== id))
 }

@@ -1,10 +1,9 @@
 <script>
-    import { createEventDispatcher } from 'svelte';
-    import { modal } from '../lib/store.js'
-
-    const dispatch = createEventDispatcher();
+    import { deleteVideo } from "../lib/helpers.js";
+    import { modal, currentVideo } from '../lib/store.js'
 
     export let id = '1'
+    export let videoID = 'youtube'
     export let imgUrl = 'https://i.ytimg.com/vi/1/hqdefault.jpg'
     export let videoUrl = 'https://www.youtube.com/watch?v=1'
 
@@ -13,12 +12,12 @@
     let mouseIsOnVideo = false
 
     const handleRemove = () => {
-        dispatch('remove', {id});
+        deleteVideo('videos', id)
     }
 
     const videoClicked = () => {
         $modal = true
-        console.log(videoUrl);
+        currentVideo.set(videoID)
     }
 
     const handleZoomIn = () => {

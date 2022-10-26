@@ -11,15 +11,17 @@
     const handleNewVideoSubmit = async () => {
         let youtubeID = inputValue.split('v=')[1]
         let imageHandler = `https://i.ytimg.com/vi/${youtubeID}/hqdefault.jpg`
-        let videoJson = generateJson(inputValue, imageHandler)
+        let videoJson = generateJson(inputValue, imageHandler, youtubeID)
         saveVideos('videos', videoJson)
     }
 
-    const generateJson = (videoUrl, imageHandler) => {
+    const generateJson = (videoUrl, imageHandler, youtubeID) => {
         let video = {
             videoUrl: videoUrl,
-            imgUrl: imageHandler
+            imgUrl: imageHandler,
+            videoID: youtubeID
         }
+        console.log(video);
         return video
     }
 </script>
