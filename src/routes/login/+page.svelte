@@ -1,9 +1,3 @@
-<script>
-    export let form
-</script>
-
-
-
 <form method="post" action="?/login">
 
     <label for="email">Email</label>

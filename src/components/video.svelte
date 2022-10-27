@@ -46,7 +46,7 @@
 
 <style>
     #video--container {
-        height: 100%;
+        height: 120%;
         width: 100%;
         border: 1px solid black;
         border-radius: 1em;
@@ -83,13 +83,13 @@
         width: 100%;
         border-radius: 1em;
         overflow:hidden;
-        transition: transform 300ms;
-        margin: -11% 0;
+        transition: transform 400ms;
+        margin: -12% 0;
         display: inline-block;
     }
 
     .zoomed--in {
-        transform: scale(1.4);
+        transform: scale(1.1);
     }
 
     .zoomed--out {
