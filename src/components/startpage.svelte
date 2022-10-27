@@ -1,5 +1,5 @@
 <script>
-    import Videolist from "../components/videolist.svelte";
+    import VideosGrid from "./videosGrid.svelte";
     import { getVideos, saveVideos } from "../lib/helpers";
     import { onMount } from 'svelte';
     
@@ -35,7 +35,7 @@
         {#await list}
             <p>loading...</p>
         {:then list}
-            <Videolist/>
+            <VideosGrid/>
         {/await}
     </div>
 </div>
@@ -45,9 +45,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        /* justify-content: center;
-        height: 100vh;
-        width: 100vw; */
     }
 
     form {
