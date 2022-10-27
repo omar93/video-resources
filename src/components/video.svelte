@@ -79,11 +79,13 @@
 
     #video--thumbnail {
         cursor: pointer;
-        height: 100%;
+        height: 140%;
         width: 100%;
         border-radius: 1em;
         overflow:hidden;
         transition: transform 300ms;
+        margin: -11% 0;
+        display: inline-block;
     }
 
     .zoomed--in {
