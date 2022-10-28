@@ -41,6 +41,7 @@
         width: 100vw;
         display: flex;
         flex-direction: column;
+        background-color: rgb(206, 206, 206);
     }
 
     nav {
@@ -65,6 +66,12 @@
     }
 
     #main--content {
-        width: 90%;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(206, 206, 206);
     }
 </style>
