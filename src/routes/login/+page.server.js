@@ -19,6 +19,6 @@ export const actions = {
                 message: data.email
             }
         }
-        throw redirect(302, '/')
+        throw redirect(303, '/')
     }
 }

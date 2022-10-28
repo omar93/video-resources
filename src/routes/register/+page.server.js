@@ -11,7 +11,7 @@ export const actions = {
             const { token, user } = await locals.pocketbase.users.authViaEmail(data.email, data.password)
 
             const updatedProfile = await locals.pocketbase.records.update('profiles', user.profile.id, { name: data.name})
-
+            
             locals.pocketbase.authStore.clear()
 
         } catch (error) {
@@ -21,6 +21,6 @@ export const actions = {
             }
         }
 
-        throw redirect(302, '/login')
+        throw redirect(303, '/login')
     }
 }
