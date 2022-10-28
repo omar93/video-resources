@@ -28,6 +28,7 @@
 
 <div id="main--container">
     <form id="link--form" on:submit|preventDefault={handleNewVideoSubmit}>
+        <label for="link">Add new youtube video:</label>
         <input type="text" name="link" placeholder="Youtube Link" bind:value={inputValue}/>
     </form>
     <div id="video--container">
@@ -46,6 +47,9 @@
 
     form {
         margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        font-size: 2em;
     }
 
     #video--container {

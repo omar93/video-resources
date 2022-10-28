@@ -12,7 +12,10 @@
         <a href="/">Home</a>
         {#if data.profile}
             <form method="POST" action="/signout">
-                <button type="submit">Signout</button>
+                <div id="signout--container">
+                    <button type="submit">Signout</button>
+                    <img id="signout--image" src="signout.png" alt="singout">
+                </div>
             </form>
         {:else}
             <a href="/login">Login</a>
@@ -45,9 +48,11 @@
     }
 
     nav {
+        font-family: sans-serif;
+        font-size: 1.5em;
         display: flex;
         justify-content: space-between;
-        padding: 1rem;
+        padding: 1.2em;
         background: #eee;
     }
 
@@ -73,5 +78,18 @@
         justify-content: center;
         align-items: center;
         background-color: rgb(206, 206, 206);
+    }
+
+    #signout--image {
+        width: 1.5em;
+        height: 1.5em;
+        margin-left: 0.5em;
+        margin-top: 10px;
+    }
+
+    button {
+        border-style: none;
+        font-size: 35px;
+        font-family: sans-serif;
     }
 </style>

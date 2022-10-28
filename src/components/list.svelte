@@ -10,5 +10,7 @@
     li {
         padding: 1rem;
         border-bottom: 1px solid #eee;
+        font-family: sans-serif;
+        font-size: 1.5em;
     }
 </style>
