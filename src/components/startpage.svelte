@@ -30,13 +30,8 @@
     <form id="link--form" on:submit|preventDefault={handleNewVideoSubmit}>
         <input type="text" name="link" placeholder="Youtube Link" bind:value={inputValue}/>
     </form>
-    <hr>
     <div id="video--container">
-        {#await list}
-            <p>loading...</p>
-        {:then list}
-            <VideosGrid/>
-        {/await}
+        <VideosGrid/>
     </div>
 </div>
 
@@ -45,6 +40,8 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        width: 100%;
+        height: 100%;
     }
 
     form {
@@ -52,8 +49,7 @@
     }
 
     #video--container {
-        margin-top: 50px;
-        height: 90%;
         width: 100%;
+        min-height: 100%;
     }
 </style>
