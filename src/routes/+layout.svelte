@@ -8,7 +8,6 @@
 <Modal/>
 
 <div id="page--wrapper">
-
     <nav>
         <div class="signout--container">
             <a href="/">Home</a>
@@ -36,8 +35,6 @@
     <div id="main--container">
         <slot></slot>
     </div>
-
-
 </div>
 
 <style>
@@ -46,8 +43,9 @@
     }
 
     #page--wrapper {
+        position: relative;
         height: 100vh;
-        max-width: 100vw;
+        width: 100vw;
         display: grid;
         grid-template-rows: 100px 100px 1fr;
         grid-template-columns: 200px 1fr;
@@ -60,12 +58,14 @@
 
     nav {
         grid-area: nav;
-        position: static;
         font-size: 1.5em;
         display: flex;
         padding: 1.2em;
         background: #eee;
         width: 100%;
+        position: sticky;
+        top: 0;
+        left: 0;
         z-index: 1;
     }
 
@@ -77,17 +77,26 @@
 
     #list--container {
         grid-area: list;
+        position: sticky;
+        top: 0;
+        left: 0;
+        align-self: start;
     }
 
     #input--container {
         grid-area: input;
         display: flex;
         justify-content: center;
-        position: static;
+        position: sticky;
+        top: 0;
+        left: 0;
+        z-index: 1;
     }
 
     #main--container {
         grid-area: main;
+        min-height: 100%;
+        min-width: 100%;
     }
 
     .signout--container {

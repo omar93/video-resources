@@ -1,7 +1,6 @@
 <script>
   import VideosGrid from "../components/videosGrid.svelte";
   export let data
-
 </script>
 
 {#if !data.profile}
