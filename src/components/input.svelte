@@ -1,11 +1,9 @@
 <script>
-    import VideosGrid from "./videosGrid.svelte";
     import { getVideos, saveVideos } from "../lib/helpers";
     import { onMount } from 'svelte';
     
     onMount(() => getVideos())
     
-    let list = []
     let inputValue = ''
     
     const handleNewVideoSubmit = async () => {
@@ -26,34 +24,27 @@
     }
 </script>
 
-<div id="main--container">
-    <form id="link--form" on:submit|preventDefault={handleNewVideoSubmit}>
-        <label for="link">Add new youtube video:</label>
-        <input type="text" name="link" placeholder="Youtube Link" bind:value={inputValue}/>
-    </form>
-    <div id="video--container">
-        <VideosGrid/>
-    </div>
-</div>
+<form id="link--form" on:submit|preventDefault={handleNewVideoSubmit}>
+    <label for="link">Add new youtube video</label>
+    <input id="link--input" type="text" name="link" placeholder="https://www.youtube.com/" bind:value={inputValue}/>
+</form>
 
 <style>
-    #main--container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-    }
-
     form {
         margin-top: 20px;
         display: flex;
         flex-direction: column;
+        align-items: center;
         font-size: 2em;
+        width: 500px;
     }
 
-    #video--container {
-        width: 100%;
-        min-height: 100%;
+    #link--input {
+        outline: none;
+        border:none;
+        text-align: center;
+        height: 30px;
+        border-radius: 5px;
+        width: 500px;
     }
 </style>

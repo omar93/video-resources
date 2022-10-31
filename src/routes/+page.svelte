@@ -1,5 +1,5 @@
 <script>
-  import Startpage from "../components/startpage.svelte";
+  import VideosGrid from "../components/videosGrid.svelte";
   export let data
 
 </script>
@@ -7,7 +7,7 @@
 {#if !data.profile}
   <span>Welcome, create an account & signin to continue</span>
 {:else}
-  <Startpage/>
+  <VideosGrid/>
 {/if}
 
 <style>

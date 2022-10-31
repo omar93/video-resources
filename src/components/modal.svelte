@@ -77,7 +77,6 @@
     #close--button {
         margin-left: auto;
         margin-right: 10px;
-        font-family: sans-serif;
         font-size: 25px;
         font-weight: 600;
         cursor: pointer;

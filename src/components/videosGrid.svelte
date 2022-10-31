@@ -16,5 +16,6 @@
         list-style-type: none;
         gap: 1em;
         row-gap: 3em;
+        max-width: 100%;
     }
 </style>

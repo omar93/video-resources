@@ -1,6 +1,7 @@
 <script>
     import Modal from "../components/modal.svelte";
     import List from "../components/list.svelte";
+    import Input from "../components/input.svelte";
     export let data
 </script>
 
@@ -9,51 +10,63 @@
 <div id="page--wrapper">
 
     <nav>
-        <a href="/">Home</a>
+        <div class="signout--container">
+            <a href="/">Home</a>
+        </div>
         {#if data.profile}
-            <form method="POST" action="/signout">
-                <div id="signout--container">
-                    <button type="submit">Signout</button>
-                    <img id="signout--image" src="signout.png" alt="singout">
-                </div>
-            </form>
+            <div class="signout--container">
+                <img id="signout--image" src="signout.png" alt="singout">
+            </div>
         {:else}
             <a href="/login">Login</a>
             <a href="/register">Register</a>
         {/if}
     </nav>
 
-    <div id="main--wrapper">
-        {#if data.profile}
-            <div id="list--content">
-                <List/>
-            </div>
-        {/if}
-        <div id="main--content">
-            <slot></slot>
+    {#if data.profile}
+        <div id="list--container">
+            <List/>
         </div>
+    {/if}
+
+    <div id="input--container">
+        <Input/>
+    </div>
+
+    <div id="main--container">
+        <slot></slot>
     </div>
 
 
 </div>
 
 <style>
+    * {
+        font-family: sans-serif;
+    }
 
     #page--wrapper {
         height: 100vh;
-        width: 100vw;
-        display: flex;
-        flex-direction: column;
+        max-width: 100vw;
+        display: grid;
+        grid-template-rows: 100px 100px 1fr;
+        grid-template-columns: 200px 1fr;
+        grid-template-areas: 
+        'nav    nav'
+        'list   input'
+        'list   main';
         background-color: rgb(206, 206, 206);
     }
 
     nav {
-        font-family: sans-serif;
+        grid-area: nav;
+        position: static;
         font-size: 1.5em;
         display: flex;
-        justify-content: space-between;
         padding: 1.2em;
         background: #eee;
+        width: 100%;
+        z-index: 1;
     }
 
     nav a {
@@ -62,34 +75,32 @@
         font-weight: bold;
     }
 
-    #main--wrapper {
-        display: flex;
+    #list--container {
+        grid-area: list;
     }
 
-    #list--content {
-        width: 10%;
+    #input--container {
+        grid-area: input;
+        display: flex;
+        justify-content: center;
+        position: static;
     }
 
-    #main--content {
-        width: 100%;
-        height: 100%;
+    #main--container {
+        grid-area: main;
+    }
+
+    .signout--container {
         display: flex;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
-        background-color: rgb(206, 206, 206);
     }
 
     #signout--image {
         width: 1.5em;
         height: 1.5em;
         margin-left: 0.5em;
-        margin-top: 10px;
+        cursor: pointer;
     }
 
-    button {
-        border-style: none;
-        font-size: 35px;
-        font-family: sans-serif;
-    }
 </style>

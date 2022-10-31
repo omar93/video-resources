@@ -18,7 +18,6 @@
         height: auto;
         margin-top: 5%;
         padding: 2em;
-        font-family: sans-serif;
         background-color: rgb(255, 255, 255);
         box-shadow: 1px 0px 7px 6px rgba(230,226,226,0.75);
         -webkit-box-shadow: 1px 0px 7px 6px rgba(230,226,226,0.75);
