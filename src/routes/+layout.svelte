@@ -78,9 +78,8 @@
     #list--container {
         grid-area: list;
         position: sticky;
-        top: 0;
-        left: 0;
-        align-self: start;
+        width: 200px;
+        outline: 3px solid red;
     }
 
     #input--container {
