@@ -25,8 +25,8 @@
 </script>
 
 <form id="link--form" on:submit|preventDefault={handleNewVideoSubmit}>
-    <label for="link">Add new youtube video</label>
-    <input id="link--input" type="text" name="link" placeholder="https://www.youtube.com/" bind:value={inputValue}/>
+    <label for="link">Add a new youtube video</label>
+    <input id="link--input" type="text" name="link" placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ" bind:value={inputValue}/>
 </form>
 
 <style>

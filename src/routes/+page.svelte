@@ -29,7 +29,7 @@
   }
   #videoGrid--container {
     width: 96%;
-    max-height: 81vh;
+    max-height: 80vh;
     overflow-y: scroll;
   }
 
@@ -38,19 +38,19 @@
     width: 12px;
   }
 
-/* Track */
-::-webkit-scrollbar-track {
-  border-radius: 10px;
-}
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #e4e4e4; 
-  border-radius: 10px;
-}
+  /* Track */
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #e4e4e4; 
+    border-radius: 10px;
+  }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #e4e4e4; 
-}
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #e4e4e4; 
+  }
 </style>

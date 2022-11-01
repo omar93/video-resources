@@ -60,13 +60,21 @@
         position: absolute;
         top: 5px;
         right: 5px;
-        background-color: rgb(146, 142, 142);
+        background-color: rgba(255, 0, 0, 0.589);
         color: white;
         border: none;
         border-radius: 50%;
         height: 25px;
         width: 25px;
         font-size: 15px;
+    }
+
+    #remove--button:hover {
+        background-color: rgba(255, 0, 0, 0.75);
+    }
+
+    #remove--button:active {
+        background-color: rgb(255, 0, 0);
     }
 
     #video--checkbox {

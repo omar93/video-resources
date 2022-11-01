@@ -29,5 +29,6 @@
         max-width: 100%;
         overflow: wrap;
         border-bottom: 1px solid #eee;
+        cursor: pointer;
     }
 </style>

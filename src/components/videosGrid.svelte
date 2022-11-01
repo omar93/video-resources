@@ -12,7 +12,7 @@
 <style>
     #videoList--container {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fit, 280px);
         list-style-type: none;
         gap: 1em;
         row-gap: 3em;

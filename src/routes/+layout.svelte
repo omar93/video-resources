@@ -103,6 +103,8 @@
 
     #list--container {
         grid-area: list;
+        border-right: 1px solid #eee;
+        height: 92vh;
     }
 
     #input--container {
