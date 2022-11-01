@@ -7,7 +7,9 @@
   {#if !data.profile}
     <span>Welcome, create an account & signin to continue</span>
   {:else}
-      <VideosGrid/>
+  <div id="videoGrid--container">
+    <VideosGrid/>
+  </div>
   {/if}
 </div>
 
@@ -25,4 +27,30 @@
     margin-top: 20%;
     font-size: 2em;
   }
+  #videoGrid--container {
+    width: 96%;
+    max-height: 81vh;
+    overflow-y: scroll;
+  }
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #e4e4e4; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #e4e4e4; 
+}
 </style>

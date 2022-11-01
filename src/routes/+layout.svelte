@@ -10,32 +10,34 @@
     }
 </script>
 
+<Modal/>
+
 <div id="page--wrapper" class=" {signedin ? 'layout1' : 'layout2'}">
-    <Modal/>
+
     <nav>
         <a id="home" href="/">Home</a>
         {#if data.profile}
-        <form method="POST" class="spacer" action="/signout">
-            <button id="signout--button" type="submit">Signout</button>
-        </form>
+            <form method="POST" class="spacer" action="/signout">
+                <button id="signout--button" type="submit">Signout</button>
+            </form>
         {:else}
-        <div class="spacer">
-            <a href="/login">Login</a>
-            <a href="/register">Register</a>
-        </div>
+            <div class="spacer">
+                <a href="/login">Login</a>
+                <a href="/register">Register</a>
+            </div>
         {/if}
     </nav>
     
-
     {#if data.profile}
         <div id="list--container">
             <List/>
         </div>
 
 
-    <div id="input--container">
-        <Input/>
-    </div>
+        <div id="input--container">
+            <Input/>
+        </div>
+
     {/if}
     
     <div id="slot--container">
@@ -49,6 +51,7 @@
         font-family: sans-serif;
         padding: 0;
         margin: 0;
+        max-height: 50vh;
     }
 
     .layout1 {

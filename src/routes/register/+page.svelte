@@ -40,6 +40,7 @@
         padding: 14px 20px;
         border-radius: 4px;
         margin-top: 10%;
+        color: white;
     }
 
     label {
