@@ -5,9 +5,8 @@
     export let data
 </script>
 
-<Modal/>
-
 <div id="page--wrapper">
+    <Modal/>
     <nav>
         <div class="signout--container">
             <a href="/">Home</a>
@@ -15,12 +14,14 @@
         {#if data.profile}
             <div class="signout--container">
                 <img id="signout--image" src="signout.png" alt="singout">
+                <a href="/signout">Signout</a>
             </div>
         {:else}
             <a href="/login">Login</a>
             <a href="/register">Register</a>
         {/if}
     </nav>
+    
 
     {#if data.profile}
         <div id="list--container">
@@ -28,45 +29,39 @@
         </div>
     {/if}
 
-    <div id="input--container">
-        <Input/>
-    </div>
+
 
     <div id="main--container">
+        <div id="input--container">
+            <Input/>
+        </div>
         <slot></slot>
     </div>
 </div>
 
 <style>
-    * {
+    :global(:root) {
         font-family: sans-serif;
+        padding: 0;
+        margin: 0;
     }
 
     #page--wrapper {
-        position: relative;
-        height: 100vh;
-        width: 100vw;
         display: grid;
-        grid-template-rows: 100px 100px 1fr;
-        grid-template-columns: 200px 1fr;
-        grid-template-areas: 
-        'nav    nav'
-        'list   input'
-        'list   main';
-        background-color: rgb(206, 206, 206);
+        grid-template-columns: 150px 1fr;
+        grid-template-rows:  150px 1fr;
+        grid-template-areas:
+        'nav nav'
+        'list main';
+        flex-direction: column;
+        
     }
 
     nav {
         grid-area: nav;
-        font-size: 1.5em;
+        font-size: 2em;
         display: flex;
-        padding: 1.2em;
         background: #eee;
-        width: 100%;
-        position: sticky;
-        top: 0;
-        left: 0;
-        z-index: 1;
     }
 
     nav a {
@@ -77,25 +72,15 @@
 
     #list--container {
         grid-area: list;
-        position: sticky;
-        width: 200px;
-        outline: 3px solid red;
     }
 
     #input--container {
-        grid-area: input;
         display: flex;
         justify-content: center;
-        position: sticky;
-        top: 0;
-        left: 0;
-        z-index: 1;
     }
 
     #main--container {
         grid-area: main;
-        min-height: 100%;
-        min-width: 100%;
     }
 
     .signout--container {

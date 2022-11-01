@@ -3,11 +3,16 @@
   export let data
 </script>
 
-{#if !data.profile}
-  <span>Welcome, create an account & signin to continue</span>
-{:else}
-  <VideosGrid/>
-{/if}
+<div id="main--content">
+  {#if !data.profile}
+    <span>Welcome, create an account & signin to continue</span>
+  {:else}
+    <div id="video--container">
+      <VideosGrid/>
+    </div>
+  {/if}
+</div>
+
 
 <style>
   span {
