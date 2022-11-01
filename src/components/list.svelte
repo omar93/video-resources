@@ -15,17 +15,19 @@
 
 <style>
     ul {
-        position: fixed;
         list-style: none;
         padding: 0;
+        margin: 0;
         height: 100%;
         overflow-wrap: break-word;
-        border: 1px solid #eee;
+        border-right: 1px solid #eee;
     }
+
     li {
         padding: 1em;
         font-size: 1.5em;
-        width: 100%;
+        max-width: 100%;
         overflow: wrap;
+        border-bottom: 1px solid #eee;
     }
 </style>
