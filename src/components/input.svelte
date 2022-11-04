@@ -1,9 +1,12 @@
 <script>
-    import { getVideos, saveVideos } from "../lib/helpers";
+    import { getVideos, saveVideos, subscribe } from "../lib/helpers";
     import { onMount } from 'svelte';
     
-    onMount(() => getVideos())
-    
+    onMount(() => {
+        getVideos();
+        subscribe();
+    })
+
     let inputValue = ''
     
     const handleNewVideoSubmit = async () => {
@@ -19,7 +22,6 @@
             imgUrl: imageHandler,
             videoID: youtubeID
         }
-        console.log(video);
         return video
     }
 </script>

@@ -10,7 +10,6 @@
         if(video) {
             id = video
             renderNow = true
-            console.log(`https://www.youtube.com/embed/${id}`);
         }
     })
 

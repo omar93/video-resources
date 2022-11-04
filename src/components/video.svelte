@@ -13,7 +13,6 @@
 
     const handleRemove = () => {
         deleteVideo('videos', id)
-        console.log(videoUrl);
     }
 
     const videoClicked = () => {
