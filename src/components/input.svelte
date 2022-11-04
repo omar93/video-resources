@@ -1,12 +1,9 @@
 <script>
-    import { getVideos, saveVideos, subscribe } from "../lib/helpers";
+    import { getVideos, saveVideos } from "../lib/helpers";
     import { onMount } from 'svelte';
     
-    onMount(() => {
-        getVideos();
-        subscribe();
-    })
-
+    onMount(() => getVideos())
+    
     let inputValue = ''
     
     const handleNewVideoSubmit = async () => {
