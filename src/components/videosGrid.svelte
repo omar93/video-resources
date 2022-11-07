@@ -1,6 +1,6 @@
 <script>
     import { videoStore } from "../lib/store";
-    import Video from "./video.svelte"; 
+    import Video from "./video.svelte";
 </script>
 
 <ul id="videoList--container">

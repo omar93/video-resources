@@ -4,12 +4,12 @@
 </script>
 
 <div id="main--content">
-  {#if !data.profile}
+  {#if !data?.user?.profile} 
     <span>Welcome, create an account & signin to continue</span>
   {:else}
-  <div id="videoGrid--container">
-    <VideosGrid/>
-  </div>
+    <div id="videoGrid--container">
+      <VideosGrid/>
+    </div>
   {/if}
 </div>
 

@@ -13,6 +13,7 @@ export const actions = {
 
         try {
             const { token, user } = await locals.pocketbase.users.authViaEmail(data.email, data.password)
+            await locals.youtube.link('omar')
         } catch (error) {
             return {
                 error: true,

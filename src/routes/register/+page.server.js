@@ -20,7 +20,6 @@ export const actions = {
                 message: error
             }
         }
-
         throw redirect(303, '/login')
     }
 }

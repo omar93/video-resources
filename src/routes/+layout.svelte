@@ -2,12 +2,15 @@
     import Modal from "../components/modal.svelte";
     import List from "../components/list.svelte";
     import Input from "../components/input.svelte";
+
     export let data
+
     let signedin = false
 
-    if(data.profile) {
+    if(data?.user?.profile) {
         signedin = true
     }
+
 </script>
 
 <Modal/>
@@ -16,7 +19,7 @@
 
     <nav>
         <a id="home" href="/">Home</a>
-        {#if data.profile}
+        {#if data?.user?.profile}
             <form method="POST" class="spacer" action="/signout">
                 <button id="signout--button" type="submit">Signout</button>
             </form>
@@ -28,7 +31,7 @@
         {/if}
     </nav>
     
-    {#if data.profile}
+    {#if data?.user?.profile}
         <div id="list--container">
             <List/>
         </div>
