@@ -13,7 +13,6 @@
     }
 
     const videoClicked = () => {
-        console.log("inc props", id, img, url, title);
         $modal = true
         currentVideo.set(url)
     }
@@ -40,10 +39,11 @@
     <img id="video--thumbnail"on:click={videoClicked} on:keypress={videoClicked} class={ mouseIsOnVideo  ? "zoomed--in" : 'zoomed--out' } src="{img}" alt="youtube thumbnail">
     <button id="remove--button" on:click|stopPropagation={handleRemove} class="{buttonsVisability ? "" : "invisible"}">X</button>
     <input class="{buttonsVisability ? "" : "invisible"}" type="checkbox" id="video--checkbox" on:click={handleCheckBox}>
-    <span>{title}</span>
 </li>
 
 <style>
+
+
     #video--container {
         height: 120%;
         width: 100%;
@@ -105,15 +105,6 @@
 
     .invisible {
         display: none;
-    }
-
-    span {
-        position: absolute;
-        z-index: 3;
-        color: white;
-        bottom: 10px;
-        left: 10px;
-        font-size: 10px;
     }
 
 </style>

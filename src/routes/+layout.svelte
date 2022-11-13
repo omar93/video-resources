@@ -68,7 +68,6 @@
         font-family: sans-serif;
         padding: 0;
         margin: 0;
-        max-height: 50vh;
     }
 
     .layout1 {
@@ -121,7 +120,7 @@
     #list--container {
         grid-area: list;
         border-right: 1px solid #eee;
-        height: 92vh;
+        height: 91vh;
     }
 
     #input--container {
