@@ -1,34 +1,36 @@
+<script>
+    import ListItem from "./listItem.svelte";
+    import { listsStore } from "../lib/store";
+    import { v4 as uuid } from 'uuid';
+
+    const handleClick = () => {
+        currentListStore.set(list);
+    }
+
+</script>
+
 <ul>
-    <li>
-        <span>memes</span>
-    </li>
-    <li>
-        <span>sveltekit</span>
-    </li>
-    <li>
-        <span>ranndom</span>
-    </li>
-    <li>
-        <span>gaming</span>
-    </li>
+    {#each $listsStore as item}
+        <ListItem {item} id={uuid()}/>
+    {/each}
 </ul>
+
+<div id="menu--container">
+    <button on:click={handleClick}>new list</button>
+</div>
 
 <style>
     ul {
         list-style: none;
         padding: 0;
         margin: 0;
-        height: 100%;
+        height: 90%;
         overflow-wrap: break-word;
         border-right: 1px solid #eee;
     }
 
-    li {
-        padding: 1em;
-        font-size: 1.5em;
-        max-width: 100%;
-        overflow: wrap;
-        border-bottom: 1px solid #eee;
-        cursor: pointer;
+    #menu--container {
+        border: 1px solid #eee;
+        height: 10%;
     }
 </style>

@@ -2,6 +2,7 @@
     import Modal from "../components/modal.svelte";
     import List from "../components/list.svelte";
     import Input from "../components/input.svelte";
+    import { v4 as uuid } from 'uuid';
 
     export let data
 
@@ -9,6 +10,19 @@
 
     if(data?.user?.profile) {
         signedin = true
+        // createDefaultList()
+    }
+
+    function createDefaultList() {
+        // let list = {
+        //         id: uuid(),
+        //         name: 'default',
+        //         items: []
+        //     }
+        // if(!localStorage.getItem('lists')) {
+        //     localStorage.setItem('lists', JSON.stringify([list]))
+        // }
+        // saveListToDB
     }
 
 </script>
@@ -113,6 +127,7 @@
     #input--container {
         display: flex;
         justify-content: center;
+        align-items: center;
     }
 
     #slot--container {

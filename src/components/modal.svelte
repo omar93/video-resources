@@ -8,7 +8,7 @@
         
     currentVideo.subscribe(video => {
         if(video) {
-            id = video
+            id = video.split('v=')[1]
             renderNow = true
         }
     })

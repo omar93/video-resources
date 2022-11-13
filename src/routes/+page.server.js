@@ -1,11 +1,9 @@
 import { redirect } from "@sveltejs/kit"
 import { YOUTUBE_API_KEY } from '$env/static/private'
+import { saveVideos } from "../lib/helpers";
 
 export const actions = {
     default: async ({ locals, request }) => {
-
-        console.log("locals");
-        console.log(locals);
 
         const formData = await request.formData();
         let link = formData.get('link')
@@ -16,13 +14,11 @@ export const actions = {
         let videoObject = {
             title: json.items[0].snippet.title,
             img: json.items[0].snippet.thumbnails.high.url,
-            youtubeID: youtubeID
+            url: link
         }
-
-        await locals.youtube.link('omar')
         
-        locals.pocketbase.authStore.clear()
-
+        saveVideos('videos', videoObject)
+        await locals.youtube.link('omar')
         locals.youtube = "omar"
         throw redirect(303, '/')
     }

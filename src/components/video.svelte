@@ -2,10 +2,7 @@
     import { deleteVideo } from "../lib/helpers.js";
     import { modal, currentVideo } from '../lib/store.js'
 
-    export let id = '1'
-    export let videoID = 'youtube'
-    export let imgUrl = 'https://i.ytimg.com/vi/1/hqdefault.jpg'
-    export let videoUrl = 'https://www.youtube.com/watch?v=1'
+    export let id, img, url, title
 
     let buttonsVisability = false
     let isVideoClicked = false
@@ -16,8 +13,9 @@
     }
 
     const videoClicked = () => {
+        console.log("inc props", id, img, url, title);
         $modal = true
-        currentVideo.set(videoID)
+        currentVideo.set(url)
     }
 
     const handleZoomIn = () => {
@@ -39,9 +37,10 @@
 </script>
 
 <li id="video--container" on:mouseenter={handleZoomIn} on:mouseleave={handleZoomOut}>
-    <img id="video--thumbnail"on:click={videoClicked} on:keypress={videoClicked} class={ mouseIsOnVideo  ? "zoomed--in" : 'zoomed--out' } src="{imgUrl}" alt="youtube thumbnail">
+    <img id="video--thumbnail"on:click={videoClicked} on:keypress={videoClicked} class={ mouseIsOnVideo  ? "zoomed--in" : 'zoomed--out' } src="{img}" alt="youtube thumbnail">
     <button id="remove--button" on:click|stopPropagation={handleRemove} class="{buttonsVisability ? "" : "invisible"}">X</button>
     <input class="{buttonsVisability ? "" : "invisible"}" type="checkbox" id="video--checkbox" on:click={handleCheckBox}>
+    <span>{title}</span>
 </li>
 
 <style>
@@ -106,6 +105,15 @@
 
     .invisible {
         display: none;
+    }
+
+    span {
+        position: absolute;
+        z-index: 3;
+        color: white;
+        bottom: 10px;
+        left: 10px;
+        font-size: 10px;
     }
 
 </style>
