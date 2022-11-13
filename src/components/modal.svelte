@@ -3,12 +3,13 @@
 
     const closeModal = () => $modal = false
     
-    let id = ''
+    let id, title
     let renderNow = false
         
     currentVideo.subscribe(video => {
         if(video) {
-            id = video.split('v=')[1]
+            id = video.url.split('v=')[1]
+            title = video.title
             renderNow = true
         }
     })
@@ -19,8 +20,8 @@
 {#if $modal}
     <div id="backdrop" on:click|self={closeModal} on:keypress={closeModal}>
         <div id="modal">
-
             <div id="tabs">
+                <span id="title">{title}</span>
                 <span id="close--button" on:click|self={closeModal} on:keypress={closeModal}>X</span>
             </div>
             <div id="content">
@@ -45,6 +46,13 @@
     :global(body) {
         margin: 0;
         padding: 0;
+    }
+
+    #title {
+        font-size: 1em;
+        font-weight: bold;
+        margin-left: 10px;
+        margin-top: 5px;
     }
 
     #backdrop {

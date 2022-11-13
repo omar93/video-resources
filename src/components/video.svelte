@@ -14,7 +14,7 @@
 
     const videoClicked = () => {
         $modal = true
-        currentVideo.set(url)
+        currentVideo.set({url,title})
     }
 
     const handleZoomIn = () => {
