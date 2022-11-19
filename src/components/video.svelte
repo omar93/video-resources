@@ -37,6 +37,9 @@
 </script>
 
 <li id="video--container" on:mouseenter={handleZoomIn} on:mouseleave={handleZoomOut}>
+    <div id="title--container">
+        <span>{title}</span>
+    </div>
     <img id="video--thumbnail"on:click={videoClicked} on:keypress={videoClicked} class={ mouseIsOnVideo  ? "zoomed--in" : 'zoomed--out' } src="{img}" alt="youtube thumbnail">
     <button id="remove--button" on:click|stopPropagation={handleRemove} class="{buttonsVisability ? "" : "invisible"}">X</button>
     <input class="{buttonsVisability ? "" : "invisible"}" type="checkbox" id="video--checkbox" on:click={handleCheckBox}>
@@ -51,6 +54,31 @@
         overflow: hidden;
         position: relative;
         transition: transform 300ms;
+    }
+
+    #title--container {
+        position: absolute;
+        top: 80%;
+        left: 0;
+        width: 100%;
+        height: 20%;
+        background-color: rgba(0,0,0,0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 15px;
+        text-align: center;
+        padding: 1px;
+        font-weight: bold;
+        opacity: 1;
+        transition: opacity 300ms;
+        z-index: 1;
+        overflow: hidden;
+    }
+
+    span {
+        padding: 5px;
     }
 
     #remove--button {
