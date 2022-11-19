@@ -49,7 +49,7 @@
 
     #video--container {
         height: 187.5px;
-        width: 300px;
+        width: 280px;
         border-radius: 1em;
         overflow: hidden;
         position: relative;

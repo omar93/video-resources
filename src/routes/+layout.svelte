@@ -9,21 +9,7 @@
 
     if(data?.user?.profile) {
         signedin = true
-        // createDefaultList()
     }
-
-    // function createDefaultList() {
-    //     let list = {
-    //             id: uuid(),
-    //             name: 'default',
-    //             items: []
-    //         }
-    //     if(!localStorage.getItem('lists')) {
-    //         localStorage.setItem('lists', JSON.stringify([list]))
-    //     }
-    //     saveListToDB
-    // }
-
 </script>
 
 <Modal/>
@@ -45,10 +31,6 @@
     </nav>
     
     {#if data?.user?.profile}
-        <div id="list--container">
-            <List/>
-        </div>
-
 
         <div id="input--container">
             <Input/>
@@ -70,13 +52,8 @@
     }
 
     .layout1 {
-        display: grid;
-        grid-template-columns: 150px 1fr;
-        grid-template-rows:  75px 100px 1fr;
-        grid-template-areas:
-        'nav    nav'
-        'list   input'
-        'list   slot';
+        display: flex;
+        flex-direction: column;
     }
 
     .layout2 > * {
@@ -86,7 +63,6 @@
     }
     
     nav {
-        grid-area: nav;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -116,20 +92,10 @@
         cursor: pointer;
     }
 
-    #list--container {
-        grid-area: list;
-        border-right: 1px solid #eee;
-        height: 91vh;
-    }
-
     #input--container {
         display: flex;
         justify-content: center;
         align-items: center;
-    }
-
-    #slot--container {
-        grid-area: slot;
     }
 
 </style>
