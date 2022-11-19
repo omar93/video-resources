@@ -33,6 +33,7 @@
         isVideoClicked = !isVideoClicked
     }
 
+
 </script>
 
 <li id="video--container" on:mouseenter={handleZoomIn} on:mouseleave={handleZoomOut}>
@@ -44,9 +45,8 @@
 <style>
 
     #video--container {
-        height: 120%;
-        width: 100%;
-        border: 1px solid black;
+        height: 187.5px;
+        width: 300px;
         border-radius: 1em;
         overflow: hidden;
         position: relative;
