@@ -7,23 +7,21 @@
     let inputValue = ''
     
     const handleNewVideoSubmit = async () => {
-        let youtubeID = inputValue.split('v=')[1]
-        let imageHandler = `https://i.ytimg.com/vi/${youtubeID}/hqdefault.jpg`
-        let videoJson = generateJson(inputValue, imageHandler, youtubeID)
-        saveVideos('videos', videoJson)
+        const response = await fetch('/', {
+            method: 'POST',
+            body: JSON.stringify(inputValue),
+            headers: {
+                'content-type': 'application/json'
+            }
+        });
+
+        let res = await response.json()
+        console.log(res);
     }
 
-    const generateJson = (videoUrl, imageHandler, youtubeID) => {
-        let video = {
-            videoUrl: videoUrl,
-            imgUrl: imageHandler,
-            videoID: youtubeID
-        }
-        return video
-    }
 </script>
 
-<form id="link--form" method="post" action="/">
+<form on:submit|preventDefault={handleNewVideoSubmit} id="link--form">
     <label for="link">Add a new youtube video</label>
     <input id="link--input" type="text" name="link" placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ" bind:value={inputValue}/>
 </form>

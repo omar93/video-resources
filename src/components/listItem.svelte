@@ -4,12 +4,11 @@
     export let item
     export let id
 
-    const handleClick = () => {
+    const handleClick = async () => {
         currentListStore.set({
             item,
             id
         });
-        console.log(item,id);
     }
 </script>
 

@@ -20,7 +20,6 @@ export const actions = {
         saveVideos('videos', videoObject)
         await locals.youtube.link('omar')
         locals.youtube = "omar"
-        throw redirect(303, '/')
     }
 }
 
