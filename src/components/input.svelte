@@ -1,13 +1,14 @@
 <script>
     import { getVideos, saveVideos } from "../lib/helpers";
     import { onMount } from 'svelte';
-    
+        
+    let inputValue = ''
+
     onMount(() => getVideos())
     
-    let inputValue = ''
-    
     const handleNewVideoSubmit = async () => {
-        const response = await fetch('/', {
+
+        const postRequest = await fetch('/api', {
             method: 'POST',
             body: JSON.stringify(inputValue),
             headers: {
@@ -15,8 +16,7 @@
             }
         });
 
-        let res = await response.json()
-        console.log(res);
+        getVideos()
     }
 
 </script>
