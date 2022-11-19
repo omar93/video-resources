@@ -3,7 +3,6 @@ import PocketBase from 'pocketbase';
 
 export async function handle({ event, resolve }) {
     event.locals.pocketbase = new PocketBase("http://192.168.1.200:8090");
-    event.locals.youtube = "youtube"
 
     // load the store data from the request cookie string
     event.locals.pocketbase.authStore.loadFromCookie(event.request.headers.get('cookie') || '');

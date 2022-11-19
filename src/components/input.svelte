@@ -1,5 +1,5 @@
 <script>
-    import { getVideos, saveVideos } from "../lib/helpers";
+    import { getVideos } from "../lib/helpers";
     import { onMount } from 'svelte';
         
     let inputValue = ''
@@ -8,7 +8,7 @@
     
     const handleNewVideoSubmit = async () => {
 
-        const postRequest = await fetch('/api', {
+        await fetch('/api', {
             method: 'POST',
             body: JSON.stringify(inputValue),
             headers: {

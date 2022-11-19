@@ -1,8 +1,7 @@
 <script>
-    import Modal from "../components/modal.svelte";
-    import List from "../components/list.svelte";
-    import Input from "../components/input.svelte";
-    import { v4 as uuid } from 'uuid';
+    import Modal from "../components/modal.svelte"
+    import List from "../components/list.svelte"
+    import Input from "../components/input.svelte"
 
     export let data
 
@@ -13,17 +12,17 @@
         // createDefaultList()
     }
 
-    function createDefaultList() {
-        // let list = {
-        //         id: uuid(),
-        //         name: 'default',
-        //         items: []
-        //     }
-        // if(!localStorage.getItem('lists')) {
-        //     localStorage.setItem('lists', JSON.stringify([list]))
-        // }
-        // saveListToDB
-    }
+    // function createDefaultList() {
+    //     let list = {
+    //             id: uuid(),
+    //             name: 'default',
+    //             items: []
+    //         }
+    //     if(!localStorage.getItem('lists')) {
+    //         localStorage.setItem('lists', JSON.stringify([list]))
+    //     }
+    //     saveListToDB
+    // }
 
 </script>
 
