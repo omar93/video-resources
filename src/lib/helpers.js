@@ -1,7 +1,7 @@
 import PocketBase from 'pocketbase'
 import { videoStore } from './store'
 
-const client = new PocketBase('http://192.168.1.200:8090')
+const client = new PocketBase('https://192.168.1.200:8090')
 
 export const getVideos = async () => {
     const resultList = await client.records.getList('videos', 1, 50)
