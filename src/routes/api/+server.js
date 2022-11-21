@@ -1,4 +1,4 @@
-import { YOUTUBE_API_KEY } from '$env/static/private'
+import { SERCER_YOUTUBE_API_KEY } from '$env/static/private'
 import PocketBase from 'pocketbase'
 
 export async function GET  ({ request, locals }) {
@@ -63,7 +63,7 @@ const getYoutubeID = (videoUrl) => {
 }
 
 const fetchFromYoutubeApi = async (youtubeID) => {
-    let url = `https://www.googleapis.com/youtube/v3/videos?id=${youtubeID}&key=${YOUTUBE_API_KEY}+&part=snippet,contentDetails,status`
+    let url = `https://www.googleapis.com/youtube/v3/videos?id=${youtubeID}&key=${SERCER_YOUTUBE_API_KEY}+&part=snippet,contentDetails,status`
     let response = await fetch(url)
     let text = await new Response(response.body).text();
     let json = await JSON.parse(text)

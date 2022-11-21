@@ -15,4 +15,4 @@ RUN npm run build
 EXPOSE 3000
 EXPOSE 24678
 
-CMD npm run dev -- --host
+CMD ["node", "index.js"]
