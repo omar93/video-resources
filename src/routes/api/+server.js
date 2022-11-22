@@ -1,4 +1,4 @@
-import { SECRET_YOUTUBE_API_KEY } from '$env/static/private'
+import { SECRET_YOUTUBE_API_KEY } from '$env/static/public'
 import PocketBase from 'pocketbase'
 
 export async function GET  ({ request, locals }) {
@@ -7,7 +7,6 @@ export async function GET  ({ request, locals }) {
     const client = new PocketBase(DBConnectionUrl)
     
     try {
-        await client.records.create("videos", videoObject)
         const resultList = await client.records.getList('videos', 1, 50)
         let list = []
         resultList.items.forEach(object => {
@@ -18,18 +17,13 @@ export async function GET  ({ request, locals }) {
                 title: object.title
             }]
         })
-        const status = { status: 200, statusText: 'Video saved' }
+        const status = { status: 200, statusText: 'Videos downloaded' }
         return new Response(JSON.stringify(list,{ status: 200, statusText: 'Video saved' }))
     } catch (error) {
         const status = { status: 500, statusText: 'Something went wrong' }
         return error
     }
 
-
-        
-
-    
-    
 }
 
 export async function POST  ({ request, locals }) {

@@ -1,7 +1,8 @@
 import PocketBase from 'pocketbase'
 import { videoStore } from './store'
+import { PUBLIC_DB_CONNECTIONURL } from '$env/static/public'
 
-const client = new PocketBase('https://192.168.1.200:8090')
+const client = new PocketBase(PUBLIC_DB_CONNECTIONURL)
 
 export const getVideos = async () => {
     const resultList = await client.records.getList('videos', 1, 50)
