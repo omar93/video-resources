@@ -1,4 +1,4 @@
-import { SECRET_YOUTUBE_API_KEY } from '$env/static/public'
+import { SECRET_YOUTUBE_API_KEY } from '$env/static/private'
 import PocketBase from 'pocketbase'
 
 export async function GET  ({ request, locals }) {
