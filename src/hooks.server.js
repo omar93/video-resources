@@ -1,8 +1,9 @@
 // src/hooks.js
 import PocketBase from 'pocketbase';
+import { PUBLIC_DB_CONNECTIONURL } from '$env/static/public'
 
 export async function handle({ event, resolve }) {
-    event.locals.pocketbase = new PocketBase("https://192.168.1.200:8090");
+    event.locals.pocketbase = new PocketBase(PUBLIC_DB_CONNECTIONURL);
 
     // load the store data from the request cookie string
     event.locals.pocketbase.authStore.loadFromCookie(event.request.headers.get('cookie') || '');

@@ -1,10 +1,23 @@
 <script>
-    import { getVideos } from "../lib/helpers";
+   import { videoStore } from '../lib/store.js';
     import { onMount } from 'svelte';
         
     let inputValue = ''
 
-    onMount(() => getVideos())
+    const getVideos = async () => {
+        const response = await fetch('/api', {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json'
+            }
+        });
+        let list = await response.json();
+        videoStore.set(list)
+    }
+
+    onMount(async () => {
+        getVideos()
+    })
     
     const handleNewVideoSubmit = async () => {
 
