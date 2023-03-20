@@ -5,7 +5,7 @@
 
 <div id="main--content">
   {#if !data?.user?.profile} 
-    <span>Welcome, create an account & signin to continue</span>
+    <span>Signin or register an account to continue</span>
   {:else}
     <div id="videoGrid--container">
       <VideosGrid/>
