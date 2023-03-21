@@ -6,6 +6,7 @@ const client = new PocketBase(PUBLIC_DB_CONNECTIONURL)
 
 export const getVideos = async () => {
     const resultList = await client.records.getList('videos', 1, 50)
+    console.log(resultList);
     let list = []
     resultList.items.forEach(object => {
         list = [...list,{
