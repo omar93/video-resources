@@ -1,8 +1,6 @@
 <script>
     import Modal from "../components/modal.svelte"
     import Input from "../components/input.svelte"
-    import { redirect } from "@sveltejs/kit"
-    import { goto } from "$app/navigation";
 
     export let data
 
@@ -10,18 +8,6 @@
 
     if(data?.user?.profile) {
         signedin = true
-    }
-
-    const signout = async () => {
-        let x = await fetch('/signout', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            }
-        });
-        let z = await x.json()
-        console.log(z);
-        await goto('/login');
     }
 
 </script>
@@ -32,10 +18,8 @@
 
     <nav class=" {signedin ? 'loggedin' : 'loggedout'}">
         {#if data?.user?.profile}
-            <!-- svelte-ignore a11y-click-events-have-key-events -->
-            <!-- <img src="/signout.png" alt="signout" on:click|preventDefault={signout}> -->
             <form action="/signout" method="post">
-                <button type="submit">signout</button>
+                <button id="signout--button" type="submit">Signout</button>
             </form>
         {:else}
             <a id="home" href="/">Home</a>
@@ -67,12 +51,6 @@
         margin: 0;
     }
 
-    img {
-        height: 100px;
-        cursor: pointer;
-    }
-
-
     .signedin {
         display: flex;
         flex-direction: column;
@@ -90,6 +68,8 @@
         font-size: 2em;
         display: flex;
         background: #eee;
+        height: 50px;
+        padding: 1em;
     }
     
 
@@ -98,10 +78,6 @@
         text-decoration: none;
         font-weight: bold;
         padding: 1em;
-    }
-
-    nav img {
-        margin-right: 50px;
     }
 
     .spacer {
@@ -116,7 +92,7 @@
         font-size: 1em;
         padding: 1em;
         cursor: pointer;
-
+        margin-top: -20px;
     }
 
     #input--container {
@@ -126,7 +102,7 @@
     }
 
 
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 750px) {
         .signedin, .signedout {
             display: flex;
             flex-direction: column-reverse;
@@ -136,6 +112,11 @@
 
         .signedin > nav {
             top: auto;
+        }
+
+        .loggedout {
+            display: flex;
+            justify-content: flex-end;
         }
     }
 
