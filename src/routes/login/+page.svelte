@@ -8,6 +8,8 @@
     
     </div>
     <input id="submit" type="submit" value="Login">
+    <br>
+    <a href="/register">Register here</a>
 </form>
 
 <style>

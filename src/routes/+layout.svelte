@@ -1,6 +1,5 @@
 <script>
     import Modal from "../components/modal.svelte"
-    import List from "../components/list.svelte"
     import Input from "../components/input.svelte"
 
     export let data
@@ -10,19 +9,20 @@
     if(data?.user?.profile) {
         signedin = true
     }
+
 </script>
 
 <Modal/>
 
-<div id="page--wrapper" class=" {signedin ? 'layout1' : 'layout2'}">
+<div id="page--wrapper" class=" {signedin ? 'signedin' : 'signedout'}">
 
-    <nav>
-        <a id="home" href="/">Home</a>
+    <nav class=" {signedin ? 'loggedin' : 'loggedout'}">
         {#if data?.user?.profile}
-            <form method="POST" class="spacer" action="/signout">
+            <form action="/signout" method="post">
                 <button id="signout--button" type="submit">Signout</button>
             </form>
         {:else}
+            <a id="home" href="/">Home</a>
             <div class="spacer">
                 <a href="/login">Login</a>
                 <a href="/register">Register</a>
@@ -51,12 +51,12 @@
         margin: 0;
     }
 
-    .layout1 {
+    .signedin {
         display: flex;
         flex-direction: column;
     }
 
-    .layout2 > * {
+    .signedout > * {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -64,12 +64,14 @@
     
     nav {
         display: flex;
-        align-items: center;
-        justify-content: center;
+        justify-content: flex-end;
         font-size: 2em;
         display: flex;
         background: #eee;
+        height: 50px;
+        padding: 1em;
     }
+    
 
     nav a {
         color: #333;
@@ -90,12 +92,32 @@
         font-size: 1em;
         padding: 1em;
         cursor: pointer;
+        margin-top: -20px;
     }
 
     #input--container {
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+
+    @media only screen and (max-width: 750px) {
+        .signedin, .signedout {
+            display: flex;
+            flex-direction: column-reverse;
+            justify-content: space-between;
+            height: 100vh;
+        }
+
+        .signedin > nav {
+            top: auto;
+        }
+
+        .loggedout {
+            display: flex;
+            justify-content: flex-end;
+        }
     }
 
 </style>

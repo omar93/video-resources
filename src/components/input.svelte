@@ -21,13 +21,15 @@
     
     const handleNewVideoSubmit = async () => {
 
-        await fetch('/api', {
-            method: 'POST',
+        const response = await fetch('/api', {
+            method: 'post',
             body: JSON.stringify(inputValue),
             headers: {
                 'content-type': 'application/json'
             }
-        });
+        })
+
+        console.log(response);
 
         getVideos()
     }
