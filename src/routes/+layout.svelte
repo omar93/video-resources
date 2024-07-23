@@ -7,7 +7,7 @@
 
     let signedin = false
 
-    if(data?.user?.profile) {
+    if(data?.user) {
         signedin = true
     }
 </script>
@@ -18,7 +18,7 @@
 
     <nav>
         <a id="home" href="/">Home</a>
-        {#if data?.user?.profile}
+        {#if signedin}
             <form method="POST" class="spacer" action="/signout">
                 <button id="signout--button" type="submit">Signout</button>
             </form>

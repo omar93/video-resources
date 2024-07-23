@@ -1,8 +1,7 @@
 export const load = ({ locals }) => {
-    if (locals.user && locals.user.profile) {
+    if (locals.user) {
         return  JSON.parse(JSON.stringify({
-            user: locals.user,
-            youtube: locals.youtube
+            user: locals.user
         }))
     }
 }

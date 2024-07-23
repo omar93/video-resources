@@ -1,25 +1,29 @@
-import { redirect } from "@sveltejs/kit"
+import { redirect } from "@sveltejs/kit";
 
 export const actions = {
     register: async ({ locals, request }) => {
-        const formData = await request.formData()
-        const data = Object.fromEntries([...formData])
+        const formData = await request.formData();
+        const data = Object.fromEntries([...formData]);
 
         try {
-            const newUser = await locals.pocketbase.users.create(data)
-
-            const { token, user } = await locals.pocketbase.users.authViaEmail(data.email, data.password)
-
-            const updatedProfile = await locals.pocketbase.records.update('profiles', user.profile.id, { name: data.name})
-            
-            locals.pocketbase.authStore.clear()
-
+            // Create new user
+            await locals.pocketbase.collection('users').create(data);
+            // Signin / Authenticate user after creation
+            await locals.pocketbase.collection('users').authWithPassword(data.email, data.password);
         } catch (error) {
-            return {
+            console.error('Registration error:', error.message);
+
+            // Extract only serializable parts of the error object
+            const errorResponse = {
                 error: true,
-                message: error
-            }
+                message: error.message || 'An error occurred',
+                status: error.status || 'unknown',
+                url: error.url || 'unknown'
+            };
+
+            return errorResponse;
         }
-        throw redirect(303, '/login')
+
+        throw redirect(303, '/login');
     }
-}
+};

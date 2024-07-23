@@ -12,8 +12,7 @@ export const actions = {
         const data = Object.fromEntries([...formData])
 
         try {
-            const { token, user } = await locals.pocketbase.users.authViaEmail(data.email, data.password)
-            await locals.youtube.link('omar')
+            await locals.pocketbase.collection('users').authWithPassword(data.email, data.password)
         } catch (error) {
             return {
                 error: true,
